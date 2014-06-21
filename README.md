@@ -14,4 +14,17 @@ Volunteers mark sales using a Raspberry Pi. The Raspberry Pi updates the sales d
 Dependencies
 ------------
 Django 1.6
+
 PostgreSQL 9.1.13
+
+TODO
+----
+Get domain name
+
+Set up Linode
+
+Figure out how to read USB input
+
+Figure out how to update remote database.
+
+Make template (graphs and stuff and manual input location)
