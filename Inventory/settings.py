@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+TEMPLATE_DIRS = ('django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader')
 
+#[os.path.join(BASE_DIR, 'templates')]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -37,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sales_record',
+    'chartit',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,6 +56,7 @@ ROOT_URLCONF = 'Inventory.urls'
 
 WSGI_APPLICATION = 'Inventory.wsgi.application'
 
+STATIC_URL = '/static/'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases

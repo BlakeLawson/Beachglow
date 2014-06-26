@@ -1,3 +1,31 @@
 from django.shortcuts import render
+from django.http import HttpRequest
+from django.shortcuts import render_to_response
 
-# Create your views here.
+from chartit import DataPool, Chart
+
+from sales_record.models import Sale
+
+def display_results(request):
+	data = DataPool(series=[{
+		'options': {'source': Sale.objects.all()},
+		'terms': ['product', 'time']
+	}])
+
+	chart = Chart(
+		datasource=data,
+		series_options=[{
+			'options':{
+				'type':'line',
+				'stacking':False},
+			'terms':{
+				'product':['time',],}
+		}],
+		chart_options={
+			'title':{'text':'Inventory Sold vs Time Sold'},
+			'xAxis':{
+				'title':{
+					'text':'Time of Sale'}}
+	})
+
+	return render_to_response('index.html', {'chart':chart},)
