@@ -1,12 +1,13 @@
-from django.shortcuts import render
-from django.http import HttpRequest
 from django.shortcuts import render_to_response
-
 from chartit import DataPool, Chart
-
 from sales_record.models import Sale
 
 def display_results(request):
+	# Filter 
+	#saleObjects = Sale.objects.all()
+
+	
+
 	data = DataPool(series=[{
 		'options': {'source': Sale.objects.all()},
 		'terms': ['product', 'time']

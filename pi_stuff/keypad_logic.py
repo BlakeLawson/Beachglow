@@ -31,9 +31,10 @@ while True:
 	key = keyPress()
 	if key == ';':
 		break
-	elif key == u'001B':
+	# User the '[' to detect the key pressed with numlock off
+	elif key == '[':
 		print "in elif"
-		rest = sys.stdin.read(2)
+		rest = sys.stdin.read(1)
 		print rest
 
 	print key
