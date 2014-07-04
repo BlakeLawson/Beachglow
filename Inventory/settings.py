@@ -22,13 +22,11 @@ TEMPLATE_DIRS = ('django.template.loaders.filesystem.Loader',
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'm!^@k@q_tw*#w^dr9(@t-u$g%xzq&8^m&g)%x+ph00$waih^5('
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -40,7 +38,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sales_record',
-    'chartit',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -77,7 +74,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 

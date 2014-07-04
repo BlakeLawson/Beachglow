@@ -2,14 +2,11 @@
 <html>
 <head>
 	{% load staticfiles %}
-	{% load chartit %}
 
 	<title>BeachGlow Sales</title>
 
 	<script type="text/javascript" src="{% static  'jquery-1.11.0.js' %}"></script>
 	<script type="text/javascript" src="{% static 'highcharts.js' %}"></script>
-
-	{{ chart|load_charts:"container" }}
 </head>
 <body>
 	<h1>The Django stuff worked</h1>
