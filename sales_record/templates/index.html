@@ -1,18 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-	{% load staticfiles %}
-	{% load chartit %}
+    {% load staticfiles %}
 
-	<title>BeachGlow Sales</title>
+    <title>BeachGlow Sales</title>
 
-	<script type="text/javascript" src="{% static  'jquery-1.11.0.js' %}"></script>
-	<script type="text/javascript" src="{% static 'highcharts.js' %}"></script>
-
-	{{ chart|load_charts:"container" }}
+    <script type="text/javascript" src="{% static 'jquery-1.11.0.js' %}"></script>
+    <script type="text/javascript" src="{% static 'highcharts.js' %}"></script>
+    <script type="text/javascript" src="https://rawgit.com/nnnick/Chart.js/master/Chart.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+    <style>
+        body {
+            font-family: "Arial";
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+function makeChart() {
+    var ctx = $("#waterChart").get(0).getContext("2d");
+    var data = {
+        labels: {{ minutes }},
+        datasets: [
+        {
+            label: "Water Bottle Sales",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: {{ sales }}
+        }
+        ]
+    };
+    var options = {
+        scaleShowGridLines : true,
+        animation: false,
+        scaleSteps: 3,
+        scaleShowLabels: true,
+    }
+    var myBarChart = new Chart(ctx).Bar(data, options);
+}
+$(makeChart);
+    </script>
 </head>
 <body>
-	<h1>The Django stuff worked</h1>
-	<div id="container"></div>
+    <div class="container-fluid">
+        <h1 class="h1">BeachGlow Sales Tracker</h1>
+        <p>Water bottles sold over time. In increments of 10 minutes, starting from noon on the day of the event.</p>
+        <canvas id="waterChart" width="960" height="500"></canvas>
+    </div>
 </body>
 </html>
