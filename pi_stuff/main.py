@@ -1,5 +1,6 @@
 import psycopg2
 import sys
+
 from datetime import datetime
 from getch import _Getch
 
@@ -15,17 +16,22 @@ def updatedb(num):
 		print "Unexpected error:", sys.exc_info()[0]
 
 	date = datetime.now()
-	for i in range(0, num):
-		l = "INSERT INTO sales_record_sale (product, time) VALUES ('water', '%s');" % date
-		
-		local_cursor.execute(l)
-		localdb.commit()
-		
-		try:
-			remote_cursor.execute(l)
-			remotedb.commit()
-		except:
-			print "Unexpected error:", sys.exc_info()[0]
+	# Faster string concatenation
+	value_list = ["('water', '%s')" % date,]
+	for i in range(1, num):
+		value_list.append(", ('water', '%s')" % date)
+	value = ''.join(value_list) + ";"
+
+	l = "INSERT INTO sales_record_sale (product, time) VALUES " + value
+	
+	local_cursor.execute(l)
+	localdb.commit()
+	
+	try:
+		remote_cursor.execute(l)
+		remotedb.commit()
+	except:
+		print "Unexpected error:", sys.exc_info()[0]
 
 # Convert numpad input (with num lock off) to numbers
 def numLockConversion(key):
