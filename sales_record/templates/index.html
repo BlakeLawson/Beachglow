@@ -8,7 +8,7 @@
     <script type="text/javascript" src="{% static 'jquery-1.11.0.js' %}"></script>
     <script type="text/javascript" src="{% static 'highcharts.js' %}"></script>
     <script type="text/javascript" src="https://rawgit.com/nnnick/Chart.js/master/Chart.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/bootstrap/css/bootstrap.min.css' %}" />
     <style>
         body {
             font-family: "Arial";
@@ -50,6 +50,8 @@ $(makeChart);
     <div class="container-fluid">
         <h1 class="h1">BeachGlow Sales Tracker</h1>
         <p>Water bottles sold over time. In increments of 10 minutes, starting from noon on the day of the event.</p>
+        <p>Y-Axis scale: {{ scale }} bottles</p>
+        <p>Total water bottles sold: {{ total }}</p>
         <canvas id="waterChart" width="960" height="500"></canvas>
     </div>
 </body>
