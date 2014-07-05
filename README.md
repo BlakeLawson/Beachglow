@@ -19,12 +19,16 @@ PostgreSQL 9.1.13
 
 TODO
 ----
-Get domain name
+Get domain name - Done
 
-Set up Linode
+Set up Linode - Done
 
-Figure out how to read USB input
+Figure out how to read USB input - Done
 
-Figure out how to update remote database.
+Figure out how to update remote database - Done
 
 Make template (graphs and stuff and manual input location)
+
+Get running on Pi, which includes making the local database, removing log in on boot, and running script on start up.
+
+Server set up. Still need to get mod_wsgi working. And get django app to run by default.
