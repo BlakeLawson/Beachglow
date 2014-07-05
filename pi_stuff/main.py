@@ -23,10 +23,10 @@ def updatedb(num):
 	value = ''.join(value_list) + ";"
 
 	l = "INSERT INTO sales_record_sale (product, time) VALUES " + value
-	
+
 	local_cursor.execute(l)
 	localdb.commit()
-	
+
 	try:
 		remote_cursor.execute(l)
 		remotedb.commit()
@@ -39,7 +39,7 @@ def numLockConversion(key):
 
 def main():
 	# Initialize getch to read keypresses
-	keyPress = _Getch()	
+	keyPress = _Getch()
 
 	while True:
 		# Read input
