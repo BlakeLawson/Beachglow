@@ -45,5 +45,15 @@ def display_results(request):
         minute = int(diff / 600)
         if 0 < minute < 66:
             sales[minute] += 1
+        else:
+            sales[0] += 1
 
-    return render_to_response('index.html', {'sales':sales, 'minutes':minutes},)
+    total = sum(sales)
+
+    scale = int(max(sales)/10)
+    if scale == 0:
+        scale = 1
+    for sale in sales:
+        sale = sale / scale
+
+    return render_to_response('index.html', {'sales':sales, 'minutes':minutes, 'scale':scale, 'total':total},)
