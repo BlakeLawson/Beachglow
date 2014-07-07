@@ -47,9 +47,10 @@
 </head>
 <body>
     <div class="container-fluid">
+        <div style="background-color:#FF6666;width:100%;position:fixed">The starting point is no longer noon!</div>
         <h1 class="h1">BeachGlow Sales Tracker</h1>
         <p>Water bottles sold over time. In increments of 10 minutes, starting from noon on the day of the event.</p>
-        <p>Y-Axis scale: {{ scale }} bottles</p>
+        <!-- <p>Y-Axis scale: {{ scale }} bottles</p> -->
         <p>Total water bottles sold: {{ total }}</p>
         <canvas id="waterChart" width="960" height="500"></canvas>
     </div>
